@@ -1,26 +1,64 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div  >
+      <h1 style={{textAlign:"center", margin:"0.3rem auto",  width:"30%", backgroundColor:"#eeeeee"}}> Simple React Person List</h1>
+      <PersonList />
     </div>
   );
-}
+};
+
+const PersonList = () => {
+  const people = [
+    {
+      img: 23,
+      name: 'Ayodele Olumide Tunde',
+      occupation: 'Software Developer'
+    },
+    {
+      img: 65,
+      name: 'Ayodele Oluseyi  samsoo',
+      occupation: 'Banker'
+    },
+    {
+      img: 79,
+      name: ' Oluyemi Ayodele ',
+      occupation: 'Lawyer'
+    }
+  ];
+  return (
+    <section>
+      <Person person={people[0]} />
+      <Person person={people[1]} >
+      this is the man with the divne touch od the masterof the univers
+      </Person>
+      <Person person={people[2]} />
+    </section>
+  );
+};
+
+const Person = props => {
+  const { name, img, occupation } = props.person;
+  const { children } = props;
+  const url = `https://randomuser.me/api/portraits/thumb/men/${img}.jpg`;
+  return (
+    <div
+      className="Person"
+      >
+        
+      <img src={url} alt=""  />
+      <div>
+        <h4>{name}</h4>
+        <h4>{occupation}</h4>
+        <p>{children}</p>
+        <button style={{ padding: '8px', border: '1px solid teal', borderRadius:"5px", backgroundColor:"teal", cursor:"pointer"  }}>
+          More Details
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default App;
